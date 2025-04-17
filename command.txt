@@ -1,0 +1,9 @@
+/Users/rainstar/Project/WebApp/startup-website/service/images
+
+echo "# startup-website" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/star-philp/startup-website.git
+git push -u origin main

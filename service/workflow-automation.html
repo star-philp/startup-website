@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 기반 업무 자동화 시스템 | AI Workflow Automation</title>
+    <meta
+      name="description"
+      content="AI Workflow Automation은 인공지능 기술을 활용하여 반복적인 업무 프로세스를 자동화함으로써 업무 생산성을 획기적으로 향상시키는 솔루션입니다."
+    />
+    <meta
+      name="keywords"
+      content="AI, 워크플로우 자동화, 업무 자동화, 인공지능, 프로세스 최적화, RPA, 디지털 전환"
+    />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/animate.min.css" />
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .bg-gradient-primary {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      }
+      .stat-card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+      .process-step {
+        position: relative;
+        padding-left: 90px;
+        margin-bottom: 30px;
+      }
+      .process-step-number {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 70px;
+        height: 70px;
+        background: rgba(0, 123, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 700;
+        color: #007bff;
+      }
+      .tech-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .tech-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(45deg, #007bff, #00c3ff);
+      }
+      .tech-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      .tech-card i {
+        background: linear-gradient(45deg, #007bff, #00c3ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+      }
+      .impact-badge {
+        display: inline-block;
+        padding: 8px 15px;
+        background: linear-gradient(45deg, #007bff, #00c3ff);
+        color: white;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-top: 15px;
+        box-shadow: 0 3px 10px rgba(0, 123, 255, 0.2);
+        transition: transform 0.3s ease;
+      }
+      .impact-badge:hover {
+        transform: translateY(-2px);
+      }
+      .benefit-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      .benefit-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, #007bff, #00c3ff);
+      }
+      .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      .benefit-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #007bff, #00c3ff);
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+      }
+      .benefit-icon i {
+        font-size: 28px;
+        color: white;
+      }
+      @keyframes slideInUp {
+        from {
+          transform: translate3d(0, 40px, 0);
+          opacity: 0;
+        }
+        to {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+      .slide-up {
+        animation: slideInUp 0.6s ease-out forwards;
+      }
+      .future-item {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 15px;
+      }
+      .future-item:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #007bff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 헤더 섹션 -->
+    <div
+      class="container-fluid bg-primary py-5 bg-header"
+      style="margin-bottom: 90px"
+    >
+      <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+          <h1 class="display-4 text-white animated zoomIn">
+            AI Workflow Automation
+          </h1>
+          <h2 class="h4 text-white animated fadeIn">
+            AI 기반 업무 자동화 시스템
+          </h2>
+          <a href="../index.html" class="h5 text-white">Home</a>
+          <i class="far fa-circle text-white px-2"></i>
+          <a href="../service.html" class="h5 text-white">AI Services</a>
+          <i class="far fa-circle text-white px-2"></i>
+          <a href="" class="h5 text-white">Workflow Automation</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 소개 섹션 -->
+    <div
+      id="introduction"
+      class="container-fluid py-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-7">
+            <div class="section-title position-relative pb-3 mb-5">
+              <h5 class="fw-bold text-primary text-uppercase">비즈니스 혁신</h5>
+              <h1 class="mb-0">AI 기반 업무 자동화의 혁신</h1>
+            </div>
+            <p class="mb-4 fs-5">
+              AI Workflow Automation은 인공지능 기술을 활용하여 반복적인 업무
+              프로세스를 자동화함으로써 업무 생산성을 획기적으로 향상시키는
+              솔루션입니다. 복잡한 데이터 처리, 문서 관리, 의사결정 과정을 AI가
+              지원하여 인적 오류를 최소화하고 비즈니스 프로세스의 효율성을
+              극대화합니다.
+            </p>
+            <div class="row g-0 mb-3">
+              <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+                <h5 class="mb-3">
+                  <i class="fa fa-check text-primary me-3"></i>반복 작업의
+                  자동화로 인한 시간 절약 (평균 업무 시간 40% 감소)
+                </h5>
+                <h5 class="mb-3">
+                  <i class="fa fa-check text-primary me-3"></i>데이터 기반
+                  의사결정 지원으로 정확성 향상 (오류율 85% 감소)
+                </h5>
+              </div>
+              <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
+                <h5 class="mb-3">
+                  <i class="fa fa-check text-primary me-3"></i>직원들의 창의적
+                  업무 집중도 향상 (혁신 활동 참여율 65% 증가)
+                </h5>
+                <h5 class="mb-3">
+                  <i class="fa fa-check text-primary me-3"></i>비용 절감 효과
+                  (운영 비용 평균 30% 감소)
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="position-relative h-100">
+              <img
+                class="position-absolute w-100 h-100 rounded wow zoomIn"
+                data-wow-delay="0.9s"
+                src="../img/automation.jpg"
+                style="object-fit: cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 업무 플로우 자동화의 이해 섹션 -->
+    <div
+      id="workflow-automation"
+      class="container-fluid py-5 bg-light wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div
+          class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+          style="max-width: 600px"
+        >
+          <h5 class="fw-bold text-primary text-uppercase">프로세스</h5>
+          <h1 class="mb-0">업무 플로우 자동화의 이해</h1>
+        </div>
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <p class="fs-5 mb-0">
+              업무 플로우 자동화는 기업 내 프로세스를 디지털화하고 자동화하여
+              수작업으로 인한 병목 현상을 제거하고 일관된 업무 처리를 가능하게
+              합니다. 우리의 솔루션은 단순한 자동화를 넘어, 머신러닝 알고리즘을
+              통해 패턴을 학습하고 지속적으로 프로세스를 최적화합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <div class="process-step wow fadeInUp" data-wow-delay="0.1s">
+              <div class="process-step-number">01</div>
+              <h3>워크플로우 정의</h3>
+              <p>
+                비즈니스 프로세스를 디지털 워크플로우로 변환하여 각 단계와
+                의사결정 포인트를 명확히 정의합니다.
+              </p>
+            </div>
+            <div class="process-step wow fadeInUp" data-wow-delay="0.3s">
+              <div class="process-step-number">02</div>
+              <h3>자동화 규칙 설정</h3>
+              <p>
+                반복 가능한 작업과 의사결정에 자동화 규칙을 적용하여 인적 개입
+                없이 처리될 수 있도록 설정합니다.
+              </p>
+            </div>
+            <div class="process-step wow fadeInUp" data-wow-delay="0.5s">
+              <div class="process-step-number">03</div>
+              <h3>데이터 통합</h3>
+              <p>
+                다양한 시스템과 데이터 소스를 통합하여 원활한 정보 흐름을
+                보장합니다.
+              </p>
+            </div>
+            <div class="process-step wow fadeInUp" data-wow-delay="0.7s">
+              <div class="process-step-number">04</div>
+              <h3>모니터링 및 최적화</h3>
+              <p>
+                실시간 모니터링과 분석을 통해 워크플로우의 성능을 지속적으로
+                평가하고 개선합니다.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="position-relative w-100">
+              <img
+                class="img-fluid rounded wow zoomIn"
+                data-wow-delay="0.9s"
+                src="../img/workflow.jpg"
+                alt="업무 플로우 자동화 프로세스"
+              />
+              <div
+                class="position-absolute"
+                style="bottom: 20px; left: 20px; right: 20px"
+              >
+                <div class="bg-white rounded p-3 shadow-sm text-center">
+                  <p class="text-muted mb-0">
+                    <i class="fa fa-info-circle text-primary me-2"></i>
+                    업무 플로우 자동화의 4단계 프로세스: 정의, 설정, 통합,
+                    최적화
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI 분석 기술 섹션 -->
+    <div
+      id="ai-analysis"
+      class="container-fluid py-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div
+          class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+          style="max-width: 600px"
+        >
+          <h5 class="fw-bold text-primary text-uppercase">AI 기술</h5>
+          <h1 class="mb-0">AI를 활용한 분석 기술과 결과</h1>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <p class="fs-5 mb-0">
+              우리의 시스템은 고급 AI 알고리즘을 활용하여 방대한 양의 업무
+              데이터를 분석하고, 의미 있는 인사이트를 추출합니다. 자연어
+              처리(NLP), 컴퓨터 비전, 예측 분석 등 다양한 AI 기술이 복합적으로
+              적용되어 기업의 의사결정을 지원합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="tech-card h-100">
+              <div class="mb-4">
+                <i class="fa fa-chart-line fa-3x text-primary"></i>
+              </div>
+              <h4>예측 분석 엔진</h4>
+              <p>
+                과거 데이터를 기반으로 미래 트렌드와 결과를 예측하여 선제적
+                의사결정을 지원합니다.
+              </p>
+              <div class="impact-badge">예측 정확도 92%</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="tech-card h-100">
+              <div class="mb-4">
+                <i class="fa fa-language fa-3x text-primary"></i>
+              </div>
+              <h4>자연어 처리 시스템</h4>
+              <p>
+                텍스트 데이터에서 중요 정보를 추출하고 문서를 자동으로 분류하여
+                지식 관리를 최적화합니다.
+              </p>
+              <div class="impact-badge">문서 처리 속도 500% 향상</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="tech-card h-100">
+              <div class="mb-4">
+                <i class="fa fa-exclamation-triangle fa-3x text-primary"></i>
+              </div>
+              <h4>이상 감지 시스템</h4>
+              <p>
+                업무 프로세스에서 비정상적인 패턴을 감지하여 위험과 기회를
+                조기에 식별합니다.
+              </p>
+              <div class="impact-badge">이상 감지율 95%</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.7s">
+            <div class="tech-card h-100">
+              <div class="mb-4">
+                <i class="fa fa-cogs fa-3x text-primary"></i>
+              </div>
+              <h4>최적화 알고리즘</h4>
+              <p>
+                리소스 할당과 일정 관리를 최적화하여 비용 절감과 효율성 향상을
+                도모합니다.
+              </p>
+              <div class="impact-badge">자원 활용도 40% 개선</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-12 text-center">
+            <img
+              class="img-fluid rounded shadow-lg wow zoomIn"
+              data-wow-delay="0.5s"
+              src="../img/dashboard.jpg"
+              alt="AI 분석 대시보드"
+              style="max-height: 500px"
+            />
+            <p class="mt-3 text-muted">
+              <i class="fa fa-info-circle me-2"></i>
+              AI 기반 분석 대시보드를 통한 비즈니스 인사이트 시각화
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 장점과 경영환경 영향 섹션 -->
+    <div
+      id="benefits-impact"
+      class="container-fluid py-5 bg-light wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div
+          class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+          style="max-width: 600px"
+        >
+          <h5 class="fw-bold text-primary text-uppercase">경영 혁신</h5>
+          <h1 class="mb-0">자동화 기반의 장점과 경영환경에 미치는 영향</h1>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <p class="fs-5 mb-0">
+              AI 기반 업무 자동화는 단순한 효율성 향상을 넘어 기업 문화와 경영
+              방식의 근본적인 변화를 가져옵니다. 직원들은 반복적인 업무에서
+              벗어나 창의적 가치 창출에 집중할 수 있으며, 경영진은 보다 전략적인
+              의사결정에 시간을 투자할 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="benefit-card bg-white p-4">
+              <div class="benefit-icon">
+                <i class="fa fa-dollar-sign fa-2x text-primary"></i>
+              </div>
+              <h4 class="text-center mb-3">비용 효율성</h4>
+              <p>
+                반복 작업의 자동화를 통해 인건비를 절감하고, 오류 감소로 인한
+                재작업 비용을 최소화합니다.
+              </p>
+              <div class="bg-light p-3 rounded text-center">
+                <strong class="text-primary">총 운영 비용 평균 30% 절감</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="benefit-card bg-white p-4">
+              <div class="benefit-icon">
+                <i class="fa fa-tachometer-alt fa-2x text-primary"></i>
+              </div>
+              <h4 class="text-center mb-3">민첩성 향상</h4>
+              <p>
+                시장 변화와 고객 요구에 빠르게 대응할 수 있는 유연한 업무
+                프로세스를 구축합니다.
+              </p>
+              <div class="bg-light p-3 rounded text-center">
+                <strong class="text-primary"
+                  >신규 서비스 출시 시간 60% 단축</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="benefit-card bg-white p-4">
+              <div class="benefit-icon">
+                <i class="fa fa-chart-bar fa-2x text-primary"></i>
+              </div>
+              <h4 class="text-center mb-3">데이터 기반 의사결정</h4>
+              <p>
+                실시간 데이터와 고급 분석을 통해 객관적이고 정확한 의사결정을
+                지원합니다.
+              </p>
+              <div class="bg-light p-3 rounded text-center">
+                <strong class="text-primary"
+                  >전략적 의사결정 정확도 75% 향상</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="0.7s">
+            <div class="benefit-card bg-white p-4">
+              <div class="benefit-icon">
+                <i class="fa fa-smile fa-2x text-primary"></i>
+              </div>
+              <h4 class="text-center mb-3">직원 만족도 향상</h4>
+              <p>
+                반복적이고 단조로운 업무를 줄여 직원들의 직무 만족도와 창의성을
+                높입니다.
+              </p>
+              <div class="bg-light p-3 rounded text-center">
+                <strong class="text-primary"
+                  >직원 이직률 45% 감소, 창의적 제안 70% 증가</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="0.9s">
+            <div class="benefit-card bg-white p-4">
+              <div class="benefit-icon">
+                <i class="fa fa-expand-arrows-alt fa-2x text-primary"></i>
+              </div>
+              <h4 class="text-center mb-3">확장성 강화</h4>
+              <p>
+                추가 인력 채용 없이도 업무량 증가에 효과적으로 대응할 수
+                있습니다.
+              </p>
+              <div class="bg-light p-3 rounded text-center">
+                <strong class="text-primary"
+                  >동일 인력으로 처리 업무량 200% 증가</strong
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-lg-10 mx-auto">
+            <div class="bg-white rounded p-4 shadow-sm">
+              <h4 class="mb-4 text-primary">미래 경영환경 영향</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="future-item">
+                    <p class="mb-0">
+                      유연한 근무 환경 확대로 인한 글로벌 인재 활용 증가
+                    </p>
+                  </div>
+                  <div class="future-item">
+                    <p class="mb-0">데이터 중심 조직 문화로의 전환 가속화</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="future-item">
+                    <p class="mb-0">
+                      새로운 비즈니스 모델 발굴과 혁신 기회 확대
+                    </p>
+                  </div>
+                  <div class="future-item">
+                    <p class="mb-0">
+                      지속가능한 비즈니스 운영을 위한 리소스 최적화
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 기술 설명 섹션 -->
+    <div
+      id="technical-overview"
+      class="container-fluid py-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div
+          class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+          style="max-width: 600px"
+        >
+          <h5 class="fw-bold text-primary text-uppercase">기술 개요</h5>
+          <h1 class="mb-0">전체 자동화 분석 시스템의 기술 설명</h1>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <p class="fs-5 mb-0">
+              우리의 AI 워크플로우 자동화 시스템은 최신 클라우드 기술,
+              마이크로서비스 아키텍처, AI/ML 알고리즘을 결합하여 구축되었습니다.
+              이 시스템은 확장성과 보안성을 갖추고 있으며, API를 통해 기존 기업
+              시스템과 원활하게 통합될 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="layer-card">
+              <div class="layer-header">
+                <h4 class="mb-0">데이터 수집 레이어</h4>
+              </div>
+              <div class="layer-body">
+                <p>
+                  다양한 소스에서 데이터를 수집하고 정제하여 분석 가능한 형태로
+                  변환합니다.
+                </p>
+                <div>
+                  <span class="component-badge">API 통합 모듈</span>
+                  <span class="component-badge">ETL 파이프라인</span>
+                  <span class="component-badge">실시간 데이터 스트리밍</span>
+                  <span class="component-badge">데이터 검증 엔진</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer-card">
+              <div class="layer-header">
+                <h4 class="mb-0">AI 처리 레이어</h4>
+              </div>
+              <div class="layer-body">
+                <p>
+                  수집된 데이터를 분석하고 인사이트를 도출하여 자동화된
+                  의사결정을 지원합니다.
+                </p>
+                <div>
+                  <span class="component-badge">머신러닝 엔진</span>
+                  <span class="component-badge">자연어 처리 모듈</span>
+                  <span class="component-badge">예측 분석 시스템</span>
+                  <span class="component-badge">규칙 기반 의사결정 엔진</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer-card">
+              <div class="layer-header">
+                <h4 class="mb-0">워크플로우 자동화 레이어</h4>
+              </div>
+              <div class="layer-body">
+                <p>
+                  정의된 업무 프로세스에 따라 작업을 자동으로 실행하고
+                  모니터링합니다.
+                </p>
+                <div>
+                  <span class="component-badge">프로세스 오케스트레이션</span>
+                  <span class="component-badge">작업 스케줄러</span>
+                  <span class="component-badge">알림 시스템</span>
+                  <span class="component-badge">에러 처리 메커니즘</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="layer-card">
+              <div class="layer-header">
+                <h4 class="mb-0">사용자 인터페이스 레이어</h4>
+              </div>
+              <div class="layer-body">
+                <p>
+                  사용자가 시스템을 쉽게 제어하고 모니터링할 수 있는
+                  인터페이스를 제공합니다.
+                </p>
+                <div>
+                  <span class="component-badge">대시보드</span>
+                  <span class="component-badge">워크플로우 디자이너</span>
+                  <span class="component-badge">보고서 생성기</span>
+                  <span class="component-badge">모바일 앱</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer-card">
+              <div class="layer-header">
+                <h4 class="mb-0">보안 및 규정 준수 레이어</h4>
+              </div>
+              <div class="layer-body">
+                <p>
+                  데이터와 프로세스의 보안을 유지하고 관련 규정을 준수합니다.
+                </p>
+                <div>
+                  <span class="component-badge">접근 제어</span>
+                  <span class="component-badge">암호화</span>
+                  <span class="component-badge">감사 로깅</span>
+                  <span class="component-badge">규정 준수 모니터링</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="position-relative mt-4 h-100">
+              <img
+                class="img-fluid rounded shadow-lg wow zoomIn"
+                data-wow-delay="0.5s"
+                src="../img/architecture.jpg"
+                alt="시스템 아키텍처 다이어그램"
+              />
+              <div
+                class="position-absolute"
+                style="bottom: 20px; left: 20px; right: 20px"
+              >
+                <div class="bg-white rounded p-3 shadow-sm text-center">
+                  <p class="text-muted mb-0">
+                    <i class="fa fa-info-circle text-primary me-2"></i>
+                    AI 워크플로우 자동화 시스템의 5계층 아키텍처 개념도
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA 섹션 -->
+    <div
+      class="container-fluid py-5 bg-primary wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="text-white mb-4">
+              AI 기반 업무 자동화로 비즈니스의 미래를 준비하세요
+            </h1>
+            <p class="text-white mb-4 pb-2 fs-5">
+              기업의 업무 프로세스를 혁신하고 효율성을 극대화할 수 있는 AI
+              Workflow Automation 솔루션에 대해 자세히 알아보세요.
+            </p>
+          </div>
+          <div class="col-lg-5 text-center text-lg-end">
+            <div class="d-inline-flex align-items-center mx-1">
+              <a
+                href="/request-demo"
+                class="btn btn-outline-light py-3 px-4 rounded-pill"
+              >
+                <i class="fa fa-calendar-check me-2"></i>데모 신청하기
+              </a>
+            </div>
+            <div class="d-inline-flex align-items-center mx-1 mt-2 mt-lg-0">
+              <a
+                href="/resources/whitepaper"
+                class="btn btn-secondary py-3 px-4 rounded-pill"
+              >
+                <i class="fa fa-download me-2"></i>상세 자료 다운로드
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/easing.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

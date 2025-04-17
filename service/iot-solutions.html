@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="스마트 디바이스와 인공지능을 결합한 AI-IoT 통합 솔루션으로 산업현장의 효율성과 생산성을 혁신적으로 향상시킵니다."
+    />
+    <meta
+      name="keywords"
+      content="IoT, AI, 스마트 솔루션, 데이터 수집, 스마트 센서, 예측 유지보수, 자동화, 스마트팜"
+    />
+    <meta name="author" content="AI 솔루션 개발팀" />
+    <title>AI-IoT 통합 솔루션 | 스마트 솔루션의 미래</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/animate.min.css" />
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+      .badge-new {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        background: linear-gradient(45deg, #ff5e62, #ff9966);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: 700;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+      .detail-link {
+        display: inline-block;
+        padding: 8px 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+        margin-top: 15px;
+        font-weight: 500;
+      }
+      .detail-link:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+        color: white;
+      }
+      .stats-badge {
+        display: inline-block;
+        padding: 15px 25px;
+        background: linear-gradient(45deg, #4e54c8, #8f94fb);
+        color: white;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin: 15px 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .service-item {
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 123, 255, 0.1);
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+      .bg-header {
+        background: linear-gradient(135deg, #0062cc 0%, #007bff 100%),
+          url("../img/iot-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: multiply;
+        position: relative;
+      }
+      .bg-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 83, 179, 0.4);
+      }
+      .animated-icon {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .highlight-text {
+        background: linear-gradient(
+          120deg,
+          rgba(0, 123, 255, 0.2) 0%,
+          rgba(0, 123, 255, 0) 100%
+        );
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+      .card-hover-primary:hover {
+        border-color: #007bff;
+      }
+      .custom-shape-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+      }
+      .custom-shape-divider svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 70px;
+      }
+      .custom-shape-divider .shape-fill {
+        fill: #ffffff;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="container-fluid bg-primary py-5 bg-header position-relative"
+      style="margin-bottom: 90px"
+    >
+      <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+          <h1 class="display-3 text-white animated zoomIn fw-bold">
+            <i class="fa fa-microchip animated-icon d-inline-block me-2"></i>
+            AI-IoT Solutions
+          </h1>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item">
+                <a href="../index.html" class="text-white">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="../service.html" class="text-white">AI Services</a>
+              </li>
+              <li class="breadcrumb-item active text-white" aria-current="page">
+                IoT Solutions
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <div class="custom-shape-divider">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Smart IoT Solutions with AI -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-7 position-relative">
+            <div class="badge-new">NEW</div>
+            <div class="section-title position-relative pb-3 mb-5">
+              <h5 class="fw-bold text-primary text-uppercase">
+                스마트 기술의 혁신
+              </h5>
+              <h1 class="mb-0">Smart IoT Solutions with AI</h1>
+            </div>
+            <p class="mb-4 fs-5">
+              우리의
+              <span class="highlight-text fw-bold">AI-IoT 통합 솔루션</span>은
+              스마트 디바이스와 인공지능을 결합하여 실시간 데이터 수집, 분석 및
+              자동화된 의사결정을 제공합니다. 산업현장의 효율성과 생산성을
+              혁신적으로 향상시킵니다.
+            </p>
+            <div class="d-flex align-items-center mb-4">
+              <div
+                class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
+                style="width: 60px; height: 60px"
+              >
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="ms-3">
+                <h5 class="mb-0">신뢰성 높은 AI 분석 엔진</h5>
+              </div>
+            </div>
+            <div class="d-flex align-items-center mb-4">
+              <div
+                class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
+                style="width: 60px; height: 60px"
+              >
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="ms-3">
+                <h5 class="mb-0">실시간 모니터링 시스템</h5>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
+                style="width: 60px; height: 60px"
+              >
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="ms-3">
+                <h5 class="mb-0">최적화된 자동화 프로세스</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="position-relative h-100">
+              <img
+                class="position-absolute w-100 h-100 rounded wow zoomIn"
+                data-wow-delay="0.9s"
+                src="../img/iot.jpg"
+                style="
+                  object-fit: cover;
+                  border: 5px solid #fff;
+                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IoT 핵심 기능 상세 섹션 -->
+    <div
+      class="container-fluid py-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+      style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)"
+    >
+      <div class="container py-5">
+        <div class="text-center mb-5">
+          <h5 class="fw-bold text-primary text-uppercase">핵심 기능</h5>
+          <h2 class="mb-0">AI 기반 스마트 IoT 기능</h2>
+          <p class="text-muted mt-3 mb-0">
+            최신 기술을 적용한 스마트 IoT 솔루션의 핵심 기능을 소개합니다
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- 실시간 데이터 수집 -->
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div
+              class="feature-card bg-white rounded p-4 h-100 border-top border-primary border-5"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center mb-4"
+              >
+                <div
+                  class="service-icon"
+                  style="background: rgba(0, 123, 255, 0.15)"
+                >
+                  <i class="fa fa-database fa-2x text-primary"></i>
+                </div>
+              </div>
+              <h4 class="mb-3 text-center">실시간 데이터 수집</h4>
+              <p class="mb-3 text-muted">
+                다양한 산업 환경에서 IoT 센서를 통해 실시간으로 데이터를
+                수집하고 클라우드에 안전하게 저장합니다.
+              </p>
+              <div
+                class="position-relative rounded overflow-hidden mb-3"
+                style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)"
+              >
+                <img
+                  src="images/환경 모니터링.png"
+                  class="img-fluid w-100"
+                  alt="실시간 데이터 수집"
+                />
+                <div class="position-absolute top-0 start-0 m-3">
+                  <span class="badge bg-primary rounded-pill px-3 py-2"
+                    >핵심 기능</span
+                  >
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="#" class="detail-link">자세히 보기</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 스마트 센서 통합 -->
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div
+              class="feature-card bg-white rounded p-4 h-100 border-top border-success border-5"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center mb-4"
+              >
+                <div
+                  class="service-icon"
+                  style="background: rgba(40, 167, 69, 0.15)"
+                >
+                  <i class="fa fa-microchip fa-2x text-success"></i>
+                </div>
+              </div>
+              <h4 class="mb-3 text-center">스마트 센서 통합</h4>
+              <p class="mb-3 text-muted">
+                다양한 센서 시스템을 단일 플랫폼으로 통합하여 포괄적인
+                모니터링과 제어를 가능하게 합니다.
+              </p>
+              <div
+                class="position-relative rounded overflow-hidden mb-3"
+                style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)"
+              >
+                <img
+                  src="images/수경 데이터.png"
+                  class="img-fluid w-100"
+                  alt="스마트 센서 통합"
+                />
+                <div class="position-absolute top-0 start-0 m-3">
+                  <span class="badge bg-success rounded-pill px-3 py-2"
+                    >통합 기술</span
+                  >
+                </div>
+              </div>
+              <div class="text-center">
+                <a
+                  href="#"
+                  class="detail-link"
+                  style="background-color: #28a745"
+                  >자세히 보기</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 예측 유지보수 -->
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div
+              class="feature-card bg-white rounded p-4 h-100 border-top border-info border-5"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center mb-4"
+              >
+                <div
+                  class="service-icon"
+                  style="background: rgba(23, 162, 184, 0.15)"
+                >
+                  <i class="fa fa-chart-line fa-2x text-info"></i>
+                </div>
+              </div>
+              <h4 class="mb-3 text-center">예측 유지보수</h4>
+              <p class="mb-3 text-muted">
+                AI 기반 분석을 통해 장비 고장을 사전에 예측하고, 유지보수 일정을
+                최적화하여 비용 절감에 기여합니다.
+              </p>
+              <div
+                class="position-relative rounded overflow-hidden mb-3"
+                style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)"
+              >
+                <img
+                  src="images/생산성 분석.png"
+                  class="img-fluid w-100"
+                  alt="예측 유지보수"
+                />
+                <div class="position-absolute top-0 start-0 m-3">
+                  <span class="badge bg-info rounded-pill px-3 py-2"
+                    >AI 예측</span
+                  >
+                </div>
+              </div>
+              <div class="text-center">
+                <a
+                  href="#"
+                  class="detail-link"
+                  style="background-color: #17a2b8"
+                  >자세히 보기</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 자동화된 제어 -->
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+            <div
+              class="feature-card bg-white rounded p-4 h-100 border-top border-warning border-5"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center mb-4"
+              >
+                <div
+                  class="service-icon"
+                  style="background: rgba(255, 193, 7, 0.15)"
+                >
+                  <i class="fa fa-robot fa-2x text-warning"></i>
+                </div>
+              </div>
+              <h4 class="mb-3 text-center">자동화된 제어</h4>
+              <p class="mb-3 text-muted">
+                수집된 데이터와 AI 분석 결과를 바탕으로 시스템을 자동으로
+                제어하여 최적의 운영 환경을 유지합니다.
+              </p>
+              <div
+                class="position-relative rounded overflow-hidden mb-3"
+                style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)"
+              >
+                <img
+                  src="images/품질 분석.png"
+                  class="img-fluid w-100"
+                  alt="자동화된 제어"
+                />
+                <div class="position-absolute top-0 start-0 m-3">
+                  <span
+                    class="badge bg-warning text-dark rounded-pill px-3 py-2"
+                    >자동 제어</span
+                  >
+                </div>
+              </div>
+              <div class="text-center">
+                <a
+                  href="#"
+                  class="detail-link"
+                  style="background-color: #ffc107; color: #343a40"
+                  >자세히 보기</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 스마트팜 솔루션 섹션 -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="container py-5">
+        <div
+          class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+          style="max-width: 600px"
+        >
+          <h5 class="fw-bold text-primary text-uppercase">AI 솔루션</h5>
+          <h1 class="fw-bold">스마트 팜 딸기 모니터링</h1>
+          <div class="position-relative d-inline-block mt-3">
+            <div
+              class="bg-primary rounded-pill py-1 px-4 text-white d-inline-block"
+            >
+              수경재배 딸기 생장 모니터링 솔루션
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="border-start border-primary ps-4 border-5">
+              <h3 class="mb-4">스마트 팜 딸기 AI 실시간 인식 시스템</h3>
+            </div>
+            <p class="mb-4 fs-5 text-muted">
+              최첨단 AI 기술을 활용하여 수경재배 딸기의 생육 상태를 실시간으로
+              모니터링하고 분석하는 시스템입니다. 딸기의 생장 단계를 자동으로
+              식별하고, 최적의 재배 환경을 제공하기 위한 분석 정보와 예측 결과를
+              제공합니다.
+            </p>
+
+            <div class="bg-light p-4 rounded-3 mb-4">
+              <h5 class="mb-3 text-primary">스마트 팜 딸기 재배 시스템 개요</h5>
+              <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <div
+                    class="bg-white p-3 text-center rounded shadow-sm h-100 d-flex flex-column justify-content-center"
+                  >
+                    <div
+                      class="d-inline-block mx-auto mb-3"
+                      style="
+                        width: 60px;
+                        height: 60px;
+                        line-height: 60px;
+                        background: rgba(0, 123, 255, 0.1);
+                        border-radius: 50%;
+                      "
+                    >
+                      <i class="fa fa-chart-bar fa-2x text-primary"></i>
+                    </div>
+                    <h4 class="text-primary">95%</h4>
+                    <p class="mb-0">탐지정확도</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="bg-white p-3 text-center rounded shadow-sm h-100 d-flex flex-column justify-content-center"
+                  >
+                    <div
+                      class="d-inline-block mx-auto mb-3"
+                      style="
+                        width: 60px;
+                        height: 60px;
+                        line-height: 60px;
+                        background: rgba(0, 123, 255, 0.1);
+                        border-radius: 50%;
+                      "
+                    >
+                      <i class="fa fa-calendar-check fa-2x text-primary"></i>
+                    </div>
+                    <h4 class="text-primary">±3일</h4>
+                    <p class="mb-0">수확 예측 정확도</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="d-flex align-items-center p-3 rounded bg-white shadow-sm mb-3"
+            >
+              <div
+                class="flex-shrink-0 me-3"
+                style="
+                  width: 50px;
+                  height: 50px;
+                  line-height: 50px;
+                  text-align: center;
+                  background: rgba(40, 167, 69, 0.1);
+                  border-radius: 50%;
+                "
+              >
+                <i class="fa fa-leaf fa-lg text-success"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">생장 단계 자동 식별</h5>
+                <p class="mb-0 text-muted">
+                  영양 생장기, 개화기, 과실 발달기, 수확기
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="d-flex align-items-center p-3 rounded bg-white shadow-sm"
+            >
+              <div
+                class="flex-shrink-0 me-3"
+                style="
+                  width: 50px;
+                  height: 50px;
+                  line-height: 50px;
+                  text-align: center;
+                  background: rgba(23, 162, 184, 0.1);
+                  border-radius: 50%;
+                "
+              >
+                <i class="fa fa-tachometer-alt fa-lg text-info"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">실시간 생육 환경 최적화</h5>
+                <p class="mb-0 text-muted">온도, 습도, pH, 영양분 자동 조절</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div
+              class="position-relative h-100 rounded overflow-hidden shadow-lg"
+            >
+              <img
+                class="w-100 h-100 rounded wow zoomIn"
+                data-wow-delay="0.3s"
+                src="images/생육 상태.png"
+                style="object-fit: cover"
+              />
+              <div
+                class="position-absolute bottom-0 start-0 end-0 p-4 bg-gradient-primary text-white"
+                style="
+                  background: linear-gradient(
+                    0deg,
+                    rgba(0, 123, 255, 0.9) 0%,
+                    rgba(0, 123, 255, 0) 100%
+                  );
+                "
+              >
+                <h4 class="text-white mb-0">생육 데이터 기반 AI 분석</h4>
+                <p class="text-white-50 mb-0">
+                  딸기의 생육 상태를 AI가 정밀하게 분석합니다
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 샘플 분석 데이터 섹션 -->
+    <div
+      class="container-fluid py-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+      style="background-color: #f8f9fa"
+    >
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <h3 class="mb-4">샘플 분석 데이터</h3>
+            <p class="mb-4">
+              본 시스템은 다양한 품종의 딸기('설향', '금실' 등)를 분석하여
+              최적의 생장 환경을 제공합니다. 이미지 인식 기술과 환경 센서를 통해
+              수집된 데이터를 기반으로 생육 상태, 건강 상태, 예상 수확일, 품질
+              예측 등 종합적인 정보를 제공합니다. 실시간 모니터링을 통해 이상
+              징후를 조기에 감지하고 적절한 대응 방안을 제시합니다.
+            </p>
+
+            <h4 class="mb-3">주요 기능</h4>
+            <ul class="list-group list-group-flush mb-4">
+              <li class="list-group-item bg-transparent ps-0">
+                <i class="fa fa-leaf text-primary me-2"></i> 생육 단계 자동 인식
+                (영양 생장기, 개화기, 과실 발달기, 수확기)
+              </li>
+              <li class="list-group-item bg-transparent ps-0">
+                <i class="fa fa-heartbeat text-primary me-2"></i> 건강 상태 분석
+                (잎, 줄기, 과실의 상태 모니터링)
+              </li>
+              <li class="list-group-item bg-transparent ps-0">
+                <i class="fa fa-calendar-check text-primary me-2"></i> 수확 시기
+                예측 (생장률과 환경 데이터 기반)
+              </li>
+              <li class="list-group-item bg-transparent ps-0">
+                <i class="fa fa-star text-primary me-2"></i> 품질 등급 예측
+                (크기, 색상, 당도, 경도 등)
+              </li>
+            </ul>
+
+            <h4 class="mb-3">수경재배 데이터 모니터링</h4>
+            <p class="mb-3">
+              수경재배 환경의 수분, 영양소, pH 등을 실시간으로 측정하고 분석하여
+              최적의 생육 환경을 유지합니다.
+            </p>
+            <img
+              src="images/수경 데이터.png"
+              class="img-fluid rounded wow zoomIn mb-4"
+              data-wow-delay="0.3s"
+              alt="수경재배 데이터 모니터링"
+            />
+          </div>
+
+          <div class="col-lg-6">
+            <h3 class="mb-4">정밀 분석 통계</h3>
+            <div class="row g-4">
+              <div class="col-md-4 col-sm-6">
+                <div class="bg-white rounded p-4 text-center shadow-sm">
+                  <h2 class="text-primary">95%</h2>
+                  <p class="mb-0">탐지정확도</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="bg-white rounded p-4 text-center shadow-sm">
+                  <h2 class="text-primary">±0.05g</h2>
+                  <p class="mb-0">일일생장률계산</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="bg-white rounded p-4 text-center shadow-sm">
+                  <h2 class="text-primary">±3일</h2>
+                  <p class="mb-0">수확예측</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <img
+                class="img-fluid rounded wow zoomIn"
+                data-wow-delay="0.5s"
+                src="images/생육 상태.png"
+                alt="딸기 생육 상태 분석"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 기술 소개 섹션 -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="container py-5">
+        <div
+          class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+          style="max-width: 600px"
+        >
+          <h1 class="fw-bold text-primary">기술 소개</h1>
+          <h2 class="mb-0">분석 기술과 서비스 모델</h2>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <h3 class="mb-4">분석 기술과 결과 활용</h3>
+            <p class="mb-4">
+              딥러닝 기반의 객체 인식 모델과 환경 데이터 분석을 통해 딸기의 생장
+              상태를 정밀하게 분석합니다. 수집된 데이터는 실시간으로 처리되어
+              농부에게 유용한 정보를 제공하고, 최적의 재배 환경을 자동으로
+              조절하는 데 활용됩니다.
+            </p>
+
+            <h4 class="mb-3">딸기 AI 분석 개념도</h4>
+            <p class="mb-4 fst-italic">
+              이미지에서 딸기를 감지하고, 생장 단계를 판별하며, 환경 데이터와
+              결합하여 최적의 환경 조건을 도출하는 AI 분석 과정
+            </p>
+
+            <h4 class="mb-3">핵심 기술</h4>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <div class="bg-light rounded p-3">
+                  <h5 class="mb-2">
+                    <i class="fa fa-eye text-primary me-2"></i> YOLOv8 객체 인식
+                  </h5>
+                  <p class="mb-0">딸기, 꽃, 새싹을 실시간으로 감지하고 분류</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-light rounded p-3">
+                  <h5 class="mb-2">
+                    <i class="fa fa-chart-line text-primary me-2"></i> 생장 예측
+                    모델
+                  </h5>
+                  <p class="mb-0">
+                    환경 데이터와 생육 이력을 기반으로 생장률과 수확 시기 예측
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-light rounded p-3">
+                  <h5 class="mb-2">
+                    <i class="fa fa-exclamation-triangle text-primary me-2"></i>
+                    이상 감지 시스템
+                  </h5>
+                  <p class="mb-0">
+                    비정상적인 생육 패턴을 감지하여 조기 대응 가능
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-light rounded p-3">
+                  <h5 class="mb-2">
+                    <i class="fa fa-star-half-alt text-primary me-2"></i> 품질
+                    분석 알고리즘
+                  </h5>
+                  <p class="mb-0">
+                    색상, 크기, 형태 등을 분석하여 품질 등급 예측
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <h3 class="mb-4">연계 서비스 모델</h3>
+            <p class="mb-4">
+              AI 분석 결과를 다양한 서비스와 연계하여 스마트 팜의 생산성과
+              효율성을 극대화합니다. 실시간 모니터링, 자동 제어, 모바일 알림 등
+              농부의 편의성을 높이는 서비스를 제공합니다.
+            </p>
+
+            <h4 class="mb-3">스마트팜 서비스 모델 개념도</h4>
+            <p class="mb-4 fst-italic">
+              딸기 AI 분석 시스템과 다양한 서비스 연계 모델의 상호 작용을
+              보여주는 개념도
+            </p>
+
+            <div class="position-relative mt-4">
+              <img
+                class="img-fluid rounded wow zoomIn"
+                data-wow-delay="0.1s"
+                src="images/환경 모니터링.png"
+                alt="스마트팜 서비스 모델"
+              />
+            </div>
+
+            <h4 class="mt-4 mb-3">서비스 모델</h4>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <div class="bg-light rounded p-3">
+                  <h5 class="mb-2">
+                    <i class="fa fa-tachometer-alt text-primary me-2"></i>
+                    실시간 대시보드
+                  </h5>
+                  <p class="mb-0">
+                    생육 상태, 환경 조건, 예측 정보를 한눈에 확인 가능한 웹 기반
+                    대시보드
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-light rounded p-3">
+                  <h5 class="mb-2">
+                    <i class="fa fa-sliders-h text-primary me-2"></i> 자동 환경
+                    제어
+                  </h5>
+                  <p class="mb-0">
+                    분석 결과를 기반으로 온도, 습도, 영양분 등을 자동으로 조절
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-light rounded p-3">
+                  <h5 class="mb-2">
+                    <i class="fa fa-bell text-primary me-2"></i> 알림 서비스
+                  </h5>
+                  <p class="mb-0">
+                    중요 이벤트 발생 시 즉시 알림을 제공하여 신속한 대응 지원
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-light rounded p-3">
+                  <h5 class="mb-2">
+                    <i class="fa fa-file-alt text-primary me-2"></i> 데이터 분석
+                    리포트
+                  </h5>
+                  <p class="mb-0">
+                    주간/월간 생장 보고서 제공으로 장기적인 생산 최적화 지원
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 생산 계획 지원 섹션 -->
+    <div
+      class="container-fluid py-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+      style="background-color: #f8f9fa"
+    >
+      <div class="container py-5">
+        <div
+          class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+          style="max-width: 600px"
+        >
+          <h1 class="fw-bold text-primary">생산 계획 지원</h1>
+          <p class="mb-0 fs-5">
+            AI 분석 데이터를 활용한 효율적인 생산 계획 및 수확량 예측
+          </p>
+        </div>
+
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <img
+              class="img-fluid rounded wow zoomIn"
+              data-wow-delay="0.5s"
+              src="images/생산성 분석.png"
+              alt="생산 계획"
+            />
+          </div>
+
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="h-100">
+              <h3 class="mb-4">AI 기반 생산 계획 최적화</h3>
+              <p class="mb-4">
+                수집된 딸기 생장 데이터와 환경 조건 데이터를 AI 알고리즘으로
+                분석하여 최적의 생산 계획을 수립합니다. 예상 수확량, 수확 시기,
+                품질 분포 등의 정보를 미리 예측하여 농장 운영의 효율성을
+                극대화합니다.
+              </p>
+
+              <div class="d-flex mb-4">
+                <div
+                  class="flex-shrink-0 btn-square bg-primary rounded-circle"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="fa fa-calendar text-white"></i>
+                </div>
+                <div class="ms-4">
+                  <h5>수확 일정 최적화</h5>
+                  <p class="mb-0">
+                    생장 속도와 시장 수요를 고려한 최적의 수확 일정 제안
+                  </p>
+                </div>
+              </div>
+
+              <div class="d-flex mb-4">
+                <div
+                  class="flex-shrink-0 btn-square bg-primary rounded-circle"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="fa fa-chart-pie text-white"></i>
+                </div>
+                <div class="ms-4">
+                  <h5>수확량 예측</h5>
+                  <p class="mb-0">
+                    최대 95%의 정확도로 향후 수확량 예측 및 생산량 계획 지원
+                  </p>
+                </div>
+              </div>
+
+              <div class="d-flex mb-4">
+                <div
+                  class="flex-shrink-0 btn-square bg-primary rounded-circle"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="fa fa-coins text-white"></i>
+                </div>
+                <div class="ms-4">
+                  <h5>수익성 분석</h5>
+                  <p class="mb-0">
+                    품질 예측 데이터를 기반으로 예상 수익 및 투자 효율성 분석
+                  </p>
+                </div>
+              </div>
+
+              <div class="d-flex">
+                <div
+                  class="flex-shrink-0 btn-square bg-primary rounded-circle"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="fa fa-seedling text-white"></i>
+                </div>
+                <div class="ms-4">
+                  <h5>재배 환경 최적화</h5>
+                  <p class="mb-0">
+                    각 생장 단계별 최적 환경 조건 제안으로 생산성 향상
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 데이터셋 출처 정보 섹션 -->
+    <div
+      class="container-fluid py-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+      style="background: linear-gradient(135deg, #f0f4f8 0%, #e1e9f2 100%)"
+    >
+      <div class="container py-3">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="bg-white rounded p-4 shadow-lg">
+              <div class="row align-items-center">
+                <div class="col-lg-4 mb-4 mb-lg-0 text-center">
+                  <div
+                    class="position-relative mb-3 d-inline-block"
+                    style="width: 120px; height: 120px"
+                  >
+                    <div
+                      class="position-absolute top-0 start-0 w-100 h-100 rounded-circle"
+                      style="
+                        border: 3px dashed #007bff;
+                        animation: spin 20s linear infinite;
+                      "
+                    ></div>
+                    <div
+                      class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+                    >
+                      <div
+                        class="bg-primary rounded-circle text-white d-flex align-items-center justify-content-center"
+                        style="width: 100px; height: 100px"
+                      >
+                        <i class="fa fa-database fa-3x"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <h3 class="fw-bold mb-2">AI Hub</h3>
+                  <p class="text-muted">고품질 AI 데이터셋</p>
+                </div>
+                <div class="col-lg-8">
+                  <div class="border-bottom pb-3 mb-3">
+                    <h4 class="mb-3 text-primary">데이터셋 정보</h4>
+                    <p class="mb-0">
+                      본 솔루션에 활용된 AI 모델은 다양한 품종의 딸기 생육
+                      데이터를 학습하여 개발되었습니다. 고품질의 학습 데이터를
+                      통해 95%의 높은 정확도를 달성했으며, 지속적인 학습을 통해
+                      정확도를 향상시키고 있습니다.
+                    </p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <div>
+                      <h5 class="mb-0">데이터셋 출처</h5>
+                      <p class="mb-0 text-primary fw-bold">
+                        AI Hub - 농업 분야 빅데이터
+                      </p>
+                    </div>
+                    <div class="mt-3 mt-md-0">
+                      <a
+                        href="https://www.aihub.or.kr/index.do"
+                        target="_blank"
+                        class="btn btn-primary rounded-pill px-4 py-2 shadow"
+                      >
+                        <i class="fa fa-external-link-alt me-1"></i> AI Hub
+                        방문하기
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/easing.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

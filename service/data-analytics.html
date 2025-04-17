@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM 전처리, RAG 기반 서비스 | AI Data Analytics</title>
+    <meta
+      name="description"
+      content="최신 인공지능 기술을 활용한 RAG(Retrieval-Augmented Generation) 기반 서비스는 기업의 정보 검색 및 활용 방식을 혁신적으로 변화시키고 있습니다."
+    />
+    <meta
+      name="keywords"
+      content="RAG, LLM, 데이터 분석, 업무 자동화, 인공지능, 청크 품질 평가, 문서 처리"
+    />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <style>
+      .bg-gradient-primary {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      }
+      .feature-card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+      .stats-badge {
+        display: inline-block;
+        padding: 8px 15px;
+        background: linear-gradient(45deg, #007bff, #00c3ff);
+        color: white;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin: 5px 0;
+        box-shadow: 0 3px 10px rgba(0, 123, 255, 0.2);
+        transition: transform 0.3s ease;
+      }
+      .stats-badge:hover {
+        transform: translateY(-2px);
+      }
+      .benefit-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .benefit-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 15px;
+        font-size: 1.05rem;
+      }
+      .benefit-list li:before {
+        content: "\f00c";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #007bff;
+      }
+      .model-card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin-bottom: 25px;
+        transition: transform 0.3s ease;
+        background-color: #fff;
+        border-top: 4px solid #007bff;
+      }
+      .model-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      .model-header {
+        background: rgba(0, 123, 255, 0.1);
+        padding: 15px 20px;
+      }
+      .model-body {
+        padding: 20px;
+      }
+      .field-badge {
+        display: inline-block;
+        padding: 5px 12px;
+        background-color: rgba(0, 123, 255, 0.1);
+        color: #007bff;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+      .impact-card {
+        border-left: 4px solid #007bff;
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      }
+      .impact-level {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+      .meta-section {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 30px;
+        font-size: 0.9rem;
+      }
+      .meta-section .meta-item {
+        margin-bottom: 8px;
+      }
+      .meta-tag {
+        display: inline-block;
+        padding: 3px 10px;
+        background-color: rgba(0, 123, 255, 0.1);
+        color: #6c757d;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+      .page-navigation {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+      }
+      .page-navigation .page-link {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px;
+        border-radius: 50%;
+        background-color: #f8f9fa;
+        color: #495057;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .page-navigation .page-link.active,
+      .page-navigation .page-link:hover {
+        background-color: #007bff;
+        color: white;
+      }
+      .image-caption {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin-top: 15px;
+      }
+      .industry-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        border-top: 4px solid #007bff;
+      }
+      .industry-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      .industry-icon {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      .industry-card h5 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: #2b2b2b;
+      }
+      .industry-card p {
+        text-align: center;
+        color: #6c757d;
+        margin-bottom: 0;
+      }
+      .page-transition {
+        animation: fadeInScale 0.5s ease-out;
+      }
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #007bff, #00c3ff);
+        border-radius: 50%;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+      }
+      .feature-icon i {
+        font-size: 24px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="container-fluid bg-primary py-5 bg-header"
+      style="margin-bottom: 90px"
+    >
+      <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+          <h1 class="display-4 text-white animated zoomIn">
+            LLM 전처리, RAG 기반 서비스
+          </h1>
+          <h2 class="h5 text-white mt-2 animated fadeIn">
+            인공지능 기반 데이터 분석 솔루션
+          </h2>
+          <a href="../index.html" class="h5 text-white">Home</a>
+          <i class="far fa-circle text-white px-2"></i>
+          <a href="../service.html" class="h5 text-white">AI Services</a>
+          <i class="far fa-circle text-white px-2"></i>
+          <a href="" class="h5 text-white">Data Analytics</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 페이지 1 컨텐츠 -->
+    <div
+      id="page1"
+      class="container-fluid py-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <!-- LLM 전처리, RAG 기반 서비스 안내 섹션 -->
+        <div class="section-title position-relative pb-3 mb-5">
+          <h5 class="fw-bold text-primary text-uppercase">서비스 소개</h5>
+          <h1 class="mb-0">LLM 전처리, RAG 기반 서비스 안내</h1>
+        </div>
+
+        <div class="row g-5 mb-5">
+          <div class="col-lg-6">
+            <p class="mb-4 fs-5">
+              최신 인공지능 기술을 활용한 RAG(Retrieval-Augmented Generation)
+              기반 서비스는 기업의 정보 검색 및 활용 방식을 혁신적으로
+              변화시키고 있습니다. 내부 문서, 지식 베이스 및 외부 정보를
+              효율적으로 통합하여 정확하고 신뢰할 수 있는 정보 제공이
+              가능합니다. 검색 품질 향상과 정보 접근성 개선으로 의사결정 과정을
+              가속화하며, 기업 내부 지식을 효과적으로 활용하여 시너지 효과를
+              창출합니다. 맞춤형 정보 제공을 통해 고객 경험을 개선하고, 데이터
+              기반 비즈니스 인사이트를 도출하여 비즈니스 성장을 촉진합니다.
+            </p>
+
+            <div class="row g-3 mt-4">
+              <div class="col-md-6">
+                <div class="bg-light rounded p-3 h-100">
+                  <h5 class="mb-2">
+                    <i class="fas fa-search text-primary me-2"></i> 정보 검색
+                    최적화
+                  </h5>
+                  <p class="mb-0">
+                    검색 품질 향상 및 접근성 개선으로 의사결정 과정 가속화
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="bg-light rounded p-3 h-100">
+                  <h5 class="mb-2">
+                    <i class="fas fa-brain text-primary me-2"></i> 지식 통합
+                    활용
+                  </h5>
+                  <p class="mb-0">
+                    내부 문서와 외부 정보를 효율적으로 통합하여 시너지 효과 창출
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="bg-light rounded p-3 h-100">
+                  <h5 class="mb-2">
+                    <i class="fas fa-user-check text-primary me-2"></i> 맞춤형
+                    정보 제공
+                  </h5>
+                  <p class="mb-0">
+                    개인화된 정보 제공으로 고객 경험 개선 및 만족도 향상
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="bg-light rounded p-3 h-100">
+                  <h5 class="mb-2">
+                    <i class="fas fa-chart-line text-primary me-2"></i> 비즈니스
+                    인사이트
+                  </h5>
+                  <p class="mb-0">
+                    데이터 기반 비즈니스 인사이트 도출로 성장 기회 발굴
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="position-relative h-100">
+              <img
+                class="img-fluid rounded wow zoomIn"
+                data-wow-delay="0.5s"
+                src="/images/rag-architecture.png"
+                style="object-fit: cover"
+                alt="RAG 아키텍처 개념도"
+              />
+              <div class="image-caption mt-3 text-center">
+                <i class="fas fa-info-circle me-2 text-primary"></i>
+                문서 처리부터 LLM 응답 생성까지 RAG 시스템의 전체 흐름
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 업무 플로우 자동화 섹션 -->
+        <div class="row g-5 mt-5">
+          <div class="col-lg-6">
+            <div class="position-relative h-100">
+              <img
+                class="img-fluid rounded wow zoomIn"
+                data-wow-delay="0.5s"
+                src="/images/workflow-automation.png"
+                style="object-fit: cover"
+                alt="업무 플로우 자동화 다이어그램"
+              />
+              <div class="image-caption mt-3 text-center">
+                <i class="fas fa-info-circle me-2 text-primary"></i>
+                RAG 기술을 활용한 업무 프로세스 자동화 흐름도
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="section-title position-relative pb-3 mb-4">
+              <h2>업무 플로우 자동화</h2>
+            </div>
+            <p class="mb-4">
+              RAG 기반 기술은 기업 내 문서 처리 및 지식 관리 워크플로우를
+              자동화합니다. 문서 수집 및 전처리 과정이 자동화되어 데이터 정제,
+              분류, 인덱싱이 효율적으로 이루어집니다. 질의응답 시스템을 통해
+              정보 검색 시간이 획기적으로 단축되며, 지식 베이스가 지속적으로
+              업데이트되어 항상 최신 정보를 활용할 수 있습니다. 문서 요약,
+              인사이트 추출, 보고서 자동 생성 등 다양한 문서 처리 작업이
+              자동화되어 업무 효율성이 크게 향상됩니다.
+            </p>
+
+            <div class="row g-4 mt-3">
+              <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="feature-card bg-white p-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div
+                      class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
+                      style="width: 50px; height: 50px"
+                    >
+                      <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h5 class="ms-3 mb-0">문서 전처리 자동화</h5>
+                  </div>
+                  <p>
+                    데이터 정제, 분류, 인덱싱 과정을 자동화하여 문서 관리 효율성
+                    증대
+                  </p>
+                  <div class="text-end">
+                    <div class="stats-badge">
+                      <i class="fas fa-bolt me-1"></i> 처리 시간 70% 단축
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="feature-card bg-white p-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div
+                      class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
+                      style="width: 50px; height: 50px"
+                    >
+                      <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h5 class="ms-3 mb-0">지식 베이스 자동 업데이트</h5>
+                  </div>
+                  <p>
+                    신규 정보 자동 감지 및 통합으로 항상 최신 정보 활용 가능
+                  </p>
+                  <div class="text-end">
+                    <div class="stats-badge">
+                      <i class="fas fa-clock me-1"></i> 실시간 업데이트
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 페이지 네비게이션 -->
+        <div class="page-navigation mt-5">
+          <a href="#page1" class="page-link active">1</a>
+          <a href="#page2" class="page-link">2</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 페이지 2 컨텐츠 -->
+    <div
+      id="page2"
+      class="container-fluid py-5 bg-light wow fadeInUp"
+      data-wow-delay="0.1s"
+      style="display: none"
+    >
+      <div class="container py-5">
+        <!-- 활용 기술과 AI 연계 비즈니스 모델 섹션 -->
+        <div class="section-title position-relative pb-3 mb-5">
+          <h5 class="fw-bold text-primary text-uppercase">비즈니스 솔루션</h5>
+          <h1 class="mb-0">활용 기술과 AI 연계 비즈니스 모델</h1>
+        </div>
+
+        <div class="row g-5 mb-5">
+          <div class="col-lg-6">
+            <p class="mb-4 fs-5">
+              당사의 솔루션은 최첨단 AI 기술을 활용하여 다양한 비즈니스 모델과
+              연계됩니다. 문서 벡터화 및 임베딩 기술로 의미론적 검색이
+              가능해지며, 대규모 언어 모델(LLM)을 통해 자연어 이해 및 생성
+              능력이 향상됩니다. 데이터 청킹 및 품질 평가 기술로 정보의 정확성과
+              관련성이 보장되며, 이는 구독형 서비스(SaaS), 맞춤형 솔루션 개발,
+              데이터 처리 서비스, AI 컨설팅 등 다양한 비즈니스 모델로
+              제공됩니다. 고객사의 특정 요구에 맞춘 맞춤형 솔루션을 제공하여
+              비즈니스 가치를 극대화합니다.
+            </p>
+
+            <div class="row g-4 mt-3">
+              <div class="col-md-6">
+                <div class="model-card">
+                  <div class="model-header">
+                    <h4 class="mb-0">구독형 서비스 (SaaS)</h4>
+                  </div>
+                  <div class="model-body">
+                    <p>
+                      월간 또는 연간 구독 방식으로 제공되는 RAG 기반 정보 검색
+                      및 처리 플랫폼
+                    </p>
+                    <h6 class="text-primary mt-3 mb-2">적합 기업</h6>
+                    <div>
+                      <span class="field-badge">중소기업</span>
+                      <span class="field-badge">스타트업</span>
+                      <span class="field-badge">비기술 기업</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="model-card">
+                  <div class="model-header">
+                    <h4 class="mb-0">맞춤형 솔루션 개발</h4>
+                  </div>
+                  <div class="model-body">
+                    <p>
+                      기업의 특정 요구사항과 인프라에 맞춰 설계된 RAG 기반 통합
+                      솔루션
+                    </p>
+                    <h6 class="text-primary mt-3 mb-2">적합 기업</h6>
+                    <div>
+                      <span class="field-badge">대기업</span>
+                      <span class="field-badge">금융기관</span>
+                      <span class="field-badge">의료기관</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="position-relative h-100">
+              <img
+                class="img-fluid rounded wow zoomIn"
+                data-wow-delay="0.5s"
+                src="/images/ai-business-models.png"
+                style="object-fit: cover"
+                alt="AI 연계 비즈니스 모델"
+              />
+              <div class="image-caption mt-3 text-center">
+                <i class="fas fa-info-circle me-2 text-primary"></i>
+                RAG 기술이 다양한 비즈니스 모델과 연계되는 방식
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LLM (멀티모달) + RAG 기반의 장점과 경영 영향 섹션 -->
+        <div class="row g-5 mt-3">
+          <div class="col-lg-6">
+            <div class="position-relative h-100">
+              <img
+                class="img-fluid rounded wow zoomIn"
+                data-wow-delay="0.5s"
+                src="/images/multimodal-impact.png"
+                style="object-fit: cover"
+                alt="멀티모달 LLM과 RAG의 경영 영향"
+              />
+              <div class="image-caption mt-3 text-center">
+                <i class="fas fa-info-circle me-2 text-primary"></i>
+                멀티모달 LLM과 RAG 기술이 기업 경영에 미치는 영향
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="section-title position-relative pb-3 mb-4">
+              <h2>LLM (멀티모달) + RAG 기반의 장점과 경영 영향</h2>
+            </div>
+            <p class="mb-4">
+              멀티모달 LLM과 RAG 기술의 결합은 기업 경영에 혁신적인 변화를
+              가져옵니다. 텍스트뿐만 아니라 이미지, 음성, 비디오 등 다양한
+              형태의 데이터를 통합 처리하여 더욱 풍부한 정보를 제공합니다.
+              의사결정 시간 단축으로 비즈니스 민첩성이 향상되며, 정보 접근성
+              개선으로 지식 민주화가 촉진됩니다. 비용 효율성이 증가하고 혁신
+              역량이 강화되어 경쟁 우위를 확보할 수 있습니다. 데이터 기반
+              인사이트를 통해 시장 변화에 신속하게 대응하고 새로운 비즈니스
+              기회를 발굴할 수 있습니다.
+            </p>
+
+            <div class="mt-4">
+              <div class="impact-card">
+                <h5>
+                  의사결정 속도
+                  <span
+                    class="impact-level"
+                    style="
+                      background-color: rgba(40, 167, 69, 0.15);
+                      color: #28a745;
+                    "
+                    >85% 향상</span
+                  >
+                </h5>
+                <p class="mb-0">
+                  필요한 정보를 즉시 찾아 제공함으로써 의사결정 프로세스 가속화
+                </p>
+              </div>
+
+              <div class="impact-card">
+                <h5>
+                  정보 접근성
+                  <span
+                    class="impact-level"
+                    style="
+                      background-color: rgba(0, 123, 255, 0.15);
+                      color: #007bff;
+                    "
+                    >90% 개선</span
+                  >
+                </h5>
+                <p class="mb-0">
+                  모든 직원이 필요한 정보에 쉽게 접근할 수 있는 지식 민주화 실현
+                </p>
+              </div>
+
+              <div class="impact-card">
+                <h5>
+                  비용 효율성
+                  <span
+                    class="impact-level"
+                    style="
+                      background-color: rgba(220, 53, 69, 0.15);
+                      color: #dc3545;
+                    "
+                    >30% 절감</span
+                  >
+                </h5>
+                <p class="mb-0">
+                  반복적인 정보 검색 및 처리 작업 자동화로 인건비 절감
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 청크 품질 평가 및 다양한 산업 활용 섹션 -->
+        <div class="row g-5 mt-5">
+          <div class="col-lg-12">
+            <div class="section-title position-relative pb-3 mb-4">
+              <h2>청크 품질 평가 및 다양한 산업 활용</h2>
+            </div>
+            <p class="mb-4">
+              당사의 청크 품질 평가 시스템은 정보의 완결성, 의미 일관성, 문맥
+              연속성을 정밀하게 분석하여 최적의 데이터 조각을 제공합니다. 이
+              기술은 법률 문서 자동화, 의료 기록 분석, 금융 보고서 처리, 연구
+              자료 정리, 교육 콘텐츠 개발 등 다양한 산업 분야에서 활용됩니다.
+              문서 자동화를 통해 업무 처리 시간이 최대 80% 단축되며, 지식 관리
+              효율성이 60% 이상 향상됩니다. AI 학습 데이터 튜닝으로 모델
+              정확도가 35% 향상되어 의사결정 품질이 크게 개선됩니다. 이러한 기술
+              활용은 운영 비용 절감, 직원 생산성 향상, 고객 만족도 증가, 혁신
+              역량 강화로 이어집니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+          <div class="col-lg-6">
+            <div class="position-relative h-100">
+              <img
+                class="img-fluid rounded wow zoomIn"
+                data-wow-delay="0.5s"
+                src="/images/chunk-quality-industry.png"
+                style="object-fit: cover"
+                alt="청크 품질 평가 및 산업 활용"
+              />
+              <div class="image-caption mt-3 text-center">
+                <i class="fas fa-info-circle me-2 text-primary"></i>
+                청크 품질 평가 시스템과 다양한 산업 활용 사례
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="industry-card">
+                  <div class="industry-icon">
+                    <i class="fas fa-balance-scale fa-2x text-primary"></i>
+                  </div>
+                  <h5>법률 산업</h5>
+                  <p>계약서 분석, 판례 검색, 법률 자문 지원 시스템으로 활용</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="industry-card">
+                  <div class="industry-icon">
+                    <i class="fas fa-heartbeat fa-2x text-primary"></i>
+                  </div>
+                  <h5>의료 산업</h5>
+                  <p>
+                    의료 기록 분석, 진단 지원, 연구 자료 통합 시스템으로 활용
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="industry-card">
+                  <div class="industry-icon">
+                    <i class="fas fa-chart-pie fa-2x text-primary"></i>
+                  </div>
+                  <h5>금융 산업</h5>
+                  <p>
+                    금융 보고서 분석, 시장 동향 파악, 투자 의사결정 지원에 활용
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="industry-card">
+                  <div class="industry-icon">
+                    <i class="fas fa-graduation-cap fa-2x text-primary"></i>
+                  </div>
+                  <h5>교육 산업</h5>
+                  <p>
+                    맞춤형 학습 자료 생성, 연구 자료 정리, 교육 콘텐츠 개발에
+                    활용
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 페이지 네비게이션 -->
+        <div class="page-navigation mt-5">
+          <a href="#page1" class="page-link">1</a>
+          <a href="#page2" class="page-link active">2</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+
+      // 페이지 네비게이션 스크립트
+      document.addEventListener("DOMContentLoaded", function () {
+        const page1 = document.getElementById("page1");
+        const page2 = document.getElementById("page2");
+        const pageLinks = document.querySelectorAll(".page-link");
+
+        pageLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetPage =
+              this.getAttribute("href") === "#page1" ? page1 : page2;
+            const otherPage =
+              this.getAttribute("href") === "#page1" ? page2 : page1;
+
+            otherPage.style.display = "none";
+            targetPage.classList.remove("page-transition");
+            void targetPage.offsetWidth; // 리플로우 트리거
+            targetPage.classList.add("page-transition");
+            targetPage.style.display = "block";
+
+            pageLinks.forEach((l) => l.classList.remove("active"));
+            this.classList.add("active");
+
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
