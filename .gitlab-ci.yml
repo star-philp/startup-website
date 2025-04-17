@@ -8,4 +8,4 @@ pages:
     paths:
       - public
   only:
-    - main  # 또는 master (메인 브랜치 이름에 따라 다름)
+    - main # 또는 master (메인 브랜치 이름에 따라 다름)
